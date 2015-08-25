@@ -1,0 +1,124 @@
+@charset "utf-8";
+#master
+{
+	width: 100%;
+	height: 100%;
+	background-color: #ccc;
+	font-family: georgia, serif;
+}
+#titulo
+{
+	margin-top: 10px;
+	font-size: 40;
+	width: 100%;
+	height: 10%;
+	background-color: #ccc;
+	text-align: center;
+	font-weight:bold;
+
+}
+#conteudo
+{
+	width: 100%;
+	float: left;
+	height: 90%;
+	background-color: white;
+}
+
+#idColNome
+{
+	border: 2px solid black;
+}
+fieldset{
+
+	background-color:rgb(0, 0, 0) transparent;
+	background-color:rgba(200, 200, 200, 0.6);
+	margin-top: 90px;
+	margin-left:30%;
+	margin-right:30%;
+	
+}
+#valNome, #valUser, #valCargo, #valSenha, #valLogin, #valSexo, #valFone, #valEnd, #valCPF, #valEmail, #valCid, #valEstado
+{
+	font-size: 12;
+	color: red;
+}
+
+table.table
+{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:70%;
+	border-collapse:collapse;
+	text-align: center;
+	margin-top: 100px;
+	margin-left:20%;
+	margin-right:30%;
+}
+table.table td, th
+{
+	text-align: center;
+	border:1px solid #000;
+	padding:3px 7px 2px 7px;
+}
+
+table.table tr.alt td
+{
+	text-align: center;
+	color:#000;
+	background-color:#ccc;
+}
+.negada{
+	text-align: center;
+	background-color:rgb(0, 0, 0) transparent;
+	background-color:rgba(200, 200, 200, 0.6);
+	margin-left:400px;
+	margin-right:400px;
+}
+.ul {
+	margin: 0;
+	margin-top: 150px;
+	margin-left:10px;
+	padding:0;
+	list-style: none;
+	width: 150px;
+	border-bottom: 1px solid #ccc;
+	float:left;
+
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width: 150px;
+
+}
+ul li {
+	position: relative;
+}
+li ul {
+	position: absolute;
+	left: 149px;
+	top: 0;
+	display: none;
+}
+ul li a {
+	margin: 0;
+	display: block;
+	text-decoration: none;
+	color: #777;
+	background: #fff;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-bottom: 0;
+
+}
+li:hover ul { display: block; }
+
+.botao{
+	background: #fff;
+	border: none;
+	margin: 0;
+	padding: 0;
+	font-weight:bold;
+	color: #777;
+}
