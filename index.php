@@ -1,39 +1,47 @@
 <?php
 
 include "conectar.php";
+error_reporting(E_WARNING);
 
-if(isset($_POST["acao"])) //Quando clicar em enserir
-			fazbagaca();
+if(isset($_POST["acao"]))
+	fazbagaca();
 
 function fazbagaca(){
 	$conn = conectar();
 	$nome_usuario=$_POST["nameUser"];
 	$senha_usuario=$_POST["nameSenha"];
-	$senha_usuario = md5($senha_usuario);
+	$senha_usuario = $senha_usuario;//md5($senha_usuario); 
 	$acao=$_POST["acao"];
-	//echo "$nome_usuario $senha_usuario $acao";
+	$sql="SELECT * FROM funcionario WHERE login='$nome_usuario' AND senha='$senha_usuario'";
 
+	$resp = pg_query($sql);
+	$linha = pg_fetch_array($resp);
+	if ($linha["cargo"] == 'Administrador') {
+		$permissao_usuario=3;
+		$cod_usuario = $linha["cpf"];
 	
-
-		$sql="SELECT * FROM funcionario WHERE login='$nome_usuario' AND senha='$senha_usuario'";
-
-
-		$resp = pg_query($sql);
-		$linha = pg_fetch_array($resp);
-		$permissao_usuario=$linha["cargo"];
-		$cod_usuario=$linha["idfuncionario"];
-		//echo "cod = $cod_usuario per = $permissao_usuario";
-		if($cod_usuario>0)
-		{
-			session_start();
-			$_SESSION['permissao'] = $permissao_usuario;
-			$_SESSION['usuario'] = $nome_usuario;
-			$_SESSION['cod'] = $cod_usuario;
-			header("location:cadastro.php");
-			exit();
-		}
-		else
-			echo "Senha ou usuário não confere";
+	}
+	if ($linha["cargo"] == 'Caixa') {
+		$permissao_usuario=2;
+		$cod_usuario = $linha["cpf"];
+	
+	}
+	if ($linha["cargo"] == 'Cabeleireiro') {
+		$permissao_usuario=1;
+		$cod_usuario = $linha["cpf"];
+	
+	}
+	
+	if($permissao_usuario>0){
+		session_start();
+		$_SESSION['permissao'] = $permissao_usuario;
+		$_SESSION['usuario'] = $nome_usuario;
+		$_SESSION['cod'] = $cod_usuario;
+		header("location:teste.php");
+		exit();
+	}
+	else
+		echo "Senha ou usuário não confere!";
 	
 	desconectar($conn);
 }

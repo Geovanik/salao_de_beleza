@@ -13,27 +13,34 @@
 	?>
 	<body>
 	<div id = "master">
-			
-			<div id = "conteudo">
-				<form name = "form1" action="cadastro.php" method="POST">		
-		<ul class="ul">
-			<li><a href="#"><input class="botao" type = "submit" value= "Home" name = "home"></a></li>
-			<li><a href="#">About</a>
-			<ul>
-				<li><a href="#"><input class="botao" type = "submit" value= "App Requirements" name = "appR"></a></li>
-				<li><a href="#"></a></li>
-			</ul>
-			</li>
-			<li><a href="#"><input class="botao" type = "submit" value= "Show Table" name = "mTabela"></a>
-			<li><a href="#"><input class="botao" type = "submit" value= "Register" name = "cadastrar"></a>
-			<li><a href="#">Empty item</a>
-				<ul>
-					<li><a href="#">Empty item</a></li>
-					<li><a href="#">Empty item</a></li>
-					<li><a href="#"></a></li>
+		<div id = "conteudo">
+			<form name = "form1" action="cadastro.php" method="POST">		
+				<ul class="ul">
+					<li><a href="#"><input class="botao" type = "submit" value= "Home" name = "home"></a></li>
+					<li><a href="#">About</a>
+					<ul>
+						<li><a href="#"><input class="botao" type = "submit" value= "App Requirements" name = "appR"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+					</li>
+					<li><a href="#">Cadastros</a>
+					<ul>
+						<li><a href="#"><input class="botao" type = "submit" value= "Funcionários" name = "mTabela"></a></li>
+						<li><a href="#"><input class="botao" type = "submit" value= "Clientes" name = "mTabela"></a></li>
+						<li><a href="#"><input class="botao" type = "submit" value= "Serviços" name = "mTabela"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+					</li>
+					<!--<li><a href="#"><input class="botao" type = "submit" value= "Funcionários" name = "mTabela"></a>-->
+					<li><a href="#"><input class="botao" type = "submit" value= "Register" name = "cadastrar"></a>
+					<li><a href="#">Empty item</a>
+						<ul>
+							<li><a href="#">Empty item</a></li>
+							<li><a href="#">Empty item</a></li>
+							<li><a href="#"></a></li>
+						</ul>
+					</li>
+					<li><a href="#"><input class="botao" type = "submit" value= "Exit" name = "sair"></a></li>
 				</ul>
-			</li>
-			<li><a href="#"><input class="botao" type = "submit" value= "Exit" name = "sair"></a></li>
-	</ul>
 	</body>
 </html>

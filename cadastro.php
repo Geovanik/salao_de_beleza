@@ -4,6 +4,7 @@
 	<?php
 			session_start();
 			include 'conectar.php';
+			
 			$per = $_SESSION['permissao'];
 			$user = $_SESSION['usuario'];
 			$cod = $_SESSION['cod'];
@@ -60,23 +61,23 @@
 		}
 		function preencheForm($cod){
 			$conn = conectar();
-			$sql = "SELECT * FROM funcionario WHERE idfuncionario = '$cod'";
+			$sql = "SELECT * FROM funcionario WHERE cpf = '$cod'";
 			$sql2 = pg_query($sql) or die("Erro na consulta!");
 
 			$n = pg_fetch_array($sql2);
 
-			$_POST['nome'] 		= $n['nomef'];
-			$_POST["cpf"] 		= $n['cfp'];
+			$_POST['nome'] 		= $n['nome'];
+			$_POST["cpf"] 		= $n['cpf'];
 			$_POST["email"] 	= $n['email'];
 			$_POST["login"] 	= $n['login'];
 			$_POST["senha"] 	= "";
 			$_POST["cargo"] 	= $n['cargo'];
-			$_POST["sexo"] 		= $n['sexo'];
-			$_POST["fone"]		= $n['telefone'];
+			//$_POST["sexo"] 		= $n['sexo'];
+			$_POST["fone"]		= $n['fone'];
 			$_POST["end"] 		= $n['endereco'];
-			$_POST["estado"]	= $n['estado'];
-			$_POST["cidade"] 	= $n['cidade'];
-			$_POST['cod'] 		= $n['idfuncionario'];
+		//	$_POST["estado"]	= $n['estado'];
+			//$_POST["cidade"] 	= $n['cidade'];
+			//$_POST['cod'] 		= $n['idfuncionario'];
 			desconectar($conn);
 		}
 		function editar(){
@@ -87,17 +88,18 @@
 			$email		= $_POST["nameEmail"];
 			$login 		= $_POST["nameLogin"];
 			$senha 		= $_POST["nameSenha"];
-			$sexo 		= $_POST["nameSexo"];
+		//	$sexo 		= $_POST["nameSexo"];
 			$telefone 	= $_POST["nameFone"];
 			$endereco 	= $_POST["nameEnd"];
-			$estado 	= $_POST["nameEstado"];
-			$cidade 	= $_POST["nameCid"];
-			$cod		= $_POST["nameCod"];
+			//$estado 	= $_POST["nameEstado"];
+			//$cidade 	= $_POST["nameCid"];
+		//	$cod		= $_POST["nameCod"];
+			$senha 		= md5($senha);
 			
 
 			
 			if($_SESSION['permissao'] < 3){
-				$sql = "SELECT f.cfp FROM funcionario f WHERE cfp='$cpf' AND idfuncionario !='$cpf'";
+				$sql = "SELECT f.cfp FROM funcionario f WHERE cpf='$cpf'";// AND idfuncionario !='$cpf'";
 				$resultado = pg_query($sql);
 
 				if(pg_fetch_array($resultado)){
@@ -108,16 +110,16 @@
 				}
 
 				$sql = "UPDATE funcionario SET";
-				$sql .= " idfuncionario='$cod',nomef='$nome',cfp='$cpf', email='$email', login='$login', 
-					senha='$senha', sexo='$sexo', telefone='$telefone', endereco='$endereco', 
-					estado='$estado', cidade='$cidade' where idfuncionario='$cod'";
+				$sql .= " nomef='$nome',cpf='$cpf', email='$email', login='$login', 
+					senha='$senha', fone='$telefone', endereco='$endereco', 
+					 where cpf='$cpf'";
 				$resultado = pg_query($sql);
 				header("location:cadastro.php");	
 			}
 
 			else{
 			
-				$sql = "SELECT f.cfp FROM funcionario f WHERE cfp='$cpf' AND idfuncionario !='$cpf'";
+				$sql = "SELECT f.cfp FROM funcionario f WHERE cpf='$cpf'";// AND idfuncionario !='$cpf'";
 				$resultado = pg_query($sql);
 
 				if(pg_fetch_array($resultado)){
@@ -198,31 +200,21 @@
 			$resultado = pg_query($query); // Executa a query $query na conexão $db
 			echo "<div id = 'titulo' class = 'titulo'>Funcionários</div><div class='tabela'><table class='table'>
 		        <tr class='alt'>
-		          <td>Nome Completo</td>
+		          <td>Nome</td>
 		          <td>CPF</td>
-		          <td>Email</td>
 		          <td>Cargo</td>
-		          <td>Sexo</td>
 		          <td>Telefone</td>
-		          <td>Endereço</td>
-		          <td>Estado</td>
-		          <td>Cidade</td>
 		          <td>Editar</td>
 		          <td>Excluir</td>
 		        </tr>";
 			while($linha = pg_fetch_array($resultado)) { 
 				echo '<tr>
-		          <td>'.$linha['nomef'].'</td>
-		          <td>'.$linha['cfp'].'</td>
-		          <td>'.$linha['email'].'</td>
+		          <td>'.$linha['nome'].'</td>
+		          <td>'.$linha['cpf'].'</td>
 		          <td>'.$linha['cargo'].'</td>
-		          <td>'.$linha['sexo'].'</td>
-		          <td>'.$linha['telefone'].'</td>
-		          <td>'.$linha['endereco'].'</td>
-		          <td>'.$linha['estado'].'</td>
-		          <td>'.$linha['cidade'].'</td>
-		          <td><a href="?op=2&cod='.$linha['idfuncionario'].'">Editar</a></td>
-		          <td><a href="?op=3&cod='.$linha['idfuncionario'].'" onclick="return confirm(\'Deseja realmente excluir esse cadastro?\')">Excluir</a></td>
+		          <td>'.$linha['fone'].'</td>
+		          <td><a href="?op=2&cod='.$linha['cpf'].'">Editar</a></td>
+		          <td><a href="?op=3&cod='.$linha['cpf'].'" onclick="return confirm(\'Deseja realmente excluir esse cadastro?\')">Excluir</a></td>
 		      
 		       </tr>';
  
@@ -574,7 +566,7 @@
 							<div id = 'conteudo'>
 								<form name = 'form1' action='cadastro.php' method='POST'>
 									<ul class='ul'>
-										<li><a href='#'><input class='botao' type = 'submit' value= 'Sair' name = 'sair'></a></li>
+										<li><a href='#'><input class='botao' type = 'submit' value= 'Exit' name = 'sair'></a></li>
 									</ul>";
 					include 'form.php';
 				}

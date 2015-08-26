@@ -6,6 +6,15 @@
 	background-color: #ccc;
 	font-family: georgia, serif;
 }
+#page
+{
+	z-index:110;
+	position:absolute; 
+	width: 99.5%;
+	float: right;
+	height: 90%;
+	background: white;
+}
 #titulo
 {
 	margin-top: 10px;
@@ -19,15 +28,25 @@
 }
 #conteudo
 {
-	width: 100%;
+	position: absolute;
+	z-index:120;
+	width: 20%;
 	float: left;
-	height: 90%;
-	background-color: white;
+	top:5%;
+	height: 77%;
+	background: transparent;
+
 }
 
 #idColNome
 {
 	border: 2px solid black;
+}
+#idColNome1
+{
+	border: 2px solid black;
+	font-size: 20px;
+	
 }
 fieldset{
 
@@ -38,7 +57,7 @@ fieldset{
 	margin-right:30%;
 	
 }
-#valNome, #valUser, #valCargo, #valSenha, #valLogin, #valSexo, #valFone, #valEnd, #valCPF, #valEmail, #valCid, #valEstado
+#valNome, #valUser, #valCargo, #valSenha, #valLogin, #valSexo, #valFone, #valEnd, #valCPF, #valEmail,#valValor, #valCid, #valEstado,#valData
 {
 	font-size: 12;
 	color: red;
@@ -105,20 +124,70 @@ ul li a {
 	margin: 0;
 	display: block;
 	text-decoration: none;
-	color: #777;
-	background: #fff;
+	color: black;
+	background: #ccc;
 	padding: 5px;
-	border: 1px solid #ccc;
+	border: 1px solid black;
 	border-bottom: 0;
 
+}
+a{
+	text-decoration: none;
 }
 li:hover ul { display: block; }
 
 .botao{
-	background: #fff;
-	border: none;
-	margin: 0;
-	padding: 0;
-	font-weight:bold;
-	color: #777;
+	position: relative;
 }
+.new{
+	float: right;
+	margin-top: 2%;
+	margin-right: 5%;
+}
+.ab{
+	float: right;
+}
+.ds_box {
+	background-color: #FFF;
+	border: 1px solid #000;
+	position: absolute;
+	z-index: 32767;
+}
+
+.ds_tbl {
+	background-color: #FFF;
+}
+
+.ds_head {
+	background-color: #333;
+	color: #FFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
+.ds_subhead {
+	background-color: #CCC;
+	color: #000;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 32px;
+}
+
+.ds_cell {
+	background-color: #EEE;
+	color: #000;
+	font-size: 13px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.ds_cell:hover {
+	background-color: #F3F3F3;
+} /* This hover code won't work for IE*/

@@ -1,0 +1,8 @@
+UNIVERSIDADE FEDERAL DA FRONTEIRA SUL - UFFS
+Trabalho Integrador Banco de Dados I e Programação II
+Aplicação para Salão de Beleza.
+Alunas: Gabrielle Almeida de Souza 1211100027
+	Lais Borin		   1211100037
+
+Expecificações Técnicas
+A estrutura do bando de dados feita em postgres encontra-se com o nome: EstruraBancoSalao.sql

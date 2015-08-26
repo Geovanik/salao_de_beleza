@@ -13,6 +13,7 @@
 		$user = $_SESSION['usuario'];
 		echo "<div id = 'titulo' class = 'titulo'>Olá $user !</div>";
 	?>
+	<body>
 		<fieldset id = "idColNome">
 				Universidade Federal da Fronteira Sul</br>
 				Ciência da Computação</br>
@@ -23,6 +24,6 @@
 				Demo version
 		</fielset>
 
-	<body>
+	
 	</body>
 </html>
